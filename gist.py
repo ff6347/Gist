@@ -88,7 +88,11 @@ class SimpleHTTPError(Exception):
 
 
 def token_auth_string():
-    token = settings.get('token')
+    try:
+        tokenname = settings.get('environname')
+        token = os.environ[tokenname]
+    except:
+        token = settings.get('token')
 
     if not token:
         raise MissingCredentialsException()
@@ -296,7 +300,7 @@ def gists_filter(all_gists):
         if not gist['files']:
             continue
 
-        if prefix: 
+        if prefix:
             if name[0][0:prefix_len] == prefix:
                 name[0] = name[0][prefix_len:] # remove prefix from name
             else:

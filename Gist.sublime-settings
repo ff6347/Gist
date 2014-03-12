@@ -3,6 +3,7 @@
     // see: https://github.com/condemil/Gist#generating-access-token
     "token": "",
 
+    "environname": "",
     // Show GitHub organizations
     // Example: "company1", "company2"
     "include_orgs": [],
